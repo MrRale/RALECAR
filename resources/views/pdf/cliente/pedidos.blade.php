@@ -4,23 +4,17 @@
 <head>
     <title>Pedido del cliente</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    {{-- <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script> --}}
+ 
 </head>
 
 <body>
     <style>
-/*        
-       @import url('https://fonts.googleapis.com/css2?family=Nunito:ital@1&family=Poppins:ital,wght@1,600&display=swap');
-        */
+       
+    
         #imagen{
             position:absolute;
-            width:100px;
-            margin-left:500px;
+            width:200px;
+            margin-left:470px;
         }
 
         body{
@@ -89,12 +83,15 @@
        .total{
            font-weight:bold;
        }
+       #total{
+           color:black;
+       }
 
        
     </style>
 
    
-        <img id="imagen" src="https://cdn1.iconfinder.com/data/icons/city-map-elements-2/50/105-512.png">
+        <img id="imagen" src="../public/assets/images/logos/logo-automotriz-rale.png">
       
         <h2 id="name__doc">FACTURA</h2>
         <h5 id="description__team">Automotriz R.A.L.E</h5>
@@ -171,76 +168,17 @@
         
         @endforeach
     </tbody>
-    {{-- <tfoot>
-        <tr class="fila__footer">
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-@if($orden->ruc!="")
-          <td >IVA({{$empresa->iva}}%)</td>
-          @php
-          $iva = $orden->subtotal*$empresa->iva*0.01;
-          @endphp
-          <td id="items__footer">${{$iva}}</td>
-@endif
-        </tr>
-        <tr class="fila__footer">
-            <td></td><td></td><td></td><td></td>
-            @php
-            $iva = 0;
-            if($orden->ruc!=""){
-                $iva = $orden->subtotal*$empresa->iva*0.01;
-            }
-            $descuento = ($orden->subtotal+($iva))*0.10;
-            @endphp
-           @if($orden->saldo==0)
-            <td >Dto (10%)</td>
-            <td id="items__footer"> - ${{$descuento}}</td>
-         @else
-            <tr class="fila__footer">
-                <td></td><td></td><td></td><td></td>
-                <td>Subtotal</td>
-                <td id="items__footer">${{$orden->subtotal+$iva}}</td>
-            </tr>
-            <tr class="fila__footer">
-                <td></td><td></td><td></td><td></td>
-                <td>Meses</td>
-                <td id="items__footer">{{$orden->meses}}</td>
-            </tr>
-            @php
-            if($orden->ruc!="")
-            $subtotal_iva = $orden->subtotal+($orden->subtotal*$empresa->iva*0.01);//24
-            else {
-                $subtotal_iva = $orden->subtotal;
-            }
-            $resto = $subtotal_iva - $entrada;//204
-            $interes = $resto *6*($orden->meses/100);//48.96
-            $totalpagar = $resto+$interes ;
-            $cuota = $totalpagar/$orden->meses;
-              
-            @endphp
-            <tr class="fila__footer">
-                <td></td><td></td><td></td><td></td>
-                <td>Cuotas</td>
-                <td id="items__footer">{{$cuota}} c/mes</td>
-            </tr>
-          @endif
-          </tr>
+    <tfoot>
+     
           <tr class="fila__footer">
             <td></td> <td></td><td></td><td></td>
-            <td >Total</td>
-            <td id="items__footer" class="total">${{$orden->total_pagar}}</td>
+            <th >TOTAL<p id="total">${{$p->precio*$p->cantidad}}</p> </th>
+           
+     
           </tr>
-      </tfoot> --}}
+      </tfoot>
 </table>
 
-
-        
-        
-    {{-- </div> --}}
-    {{-- <div class="page-break"></div>
-        <h1>Page 2</h1> --}}
 </body>
 
 </html>

@@ -37,7 +37,7 @@
                                         <th class="cart-product-descripcion">Tipo de producto</th>
                                         <th class="cart-product-codigo">Código del producto</th>
                                         <th class="uren-product-price">Precio unitario</th>
-                                        <th class="uren-product-quantity">Disponibilidad</th>s
+                                        <th class="uren-product-quantity">Disponibilidad</th>
                                         <th class="uren-product-subtotal">Acciones</th>
                                     </tr>
                                 </thead>

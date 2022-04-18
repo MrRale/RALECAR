@@ -65,7 +65,7 @@ class AppServiceProvider extends ServiceProvider
             $totalesOrden[$i] = $res;
         }
 
-        $totalesPedido = collect(); //creamos una coleccion para almacenar las ganancias de cada messages
+        $totalesPedido = collect(); //creamos una coleccion para almacenar las ganancias de cada mes
         for ($i = 1; $i <= $n; $i++) { // un for para iterar hasta el mes actual
             //consulta de las ganancias obtenidas por el mes de iteracion y agrupado por mes actual
             $total =  DB::table('pedidos')->select(DB::raw('sum(total) as total,fecha'))

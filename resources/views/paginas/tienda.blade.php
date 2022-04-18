@@ -95,7 +95,7 @@
                     </div>
                     <div class="col-lg-9 col-md-7 order-1 order-lg-2 order-md-2">
                         <div class="shop-toolbar">
-                            {{-- <div class="product-view-mode">
+                            <div class="product-view-mode">
                                 <a class="grid-1" data-target="gridview-1" data-toggle="tooltip"
                                     data-placement="top" title="1">1</a>
                                 <a class="grid-2" data-target="gridview-2" data-toggle="tooltip"
@@ -104,11 +104,11 @@
                                     data-placement="top" title="3">3</a>
                                 <a class="grid-4" data-target="gridview-4" data-toggle="tooltip"
                                     data-placement="top" title="4">4</a>
-                                <a class="active grid-5" data-target="gridview-5" data-toggle="tooltip"
+                                <a class="grid-5" data-target="gridview-5" data-toggle="tooltip"
                                     data-placement="top" title="5">5</a>
                                 <a class="list" data-target="listview" data-toggle="tooltip"
                                     data-placement="top" title="List"><i class="fa fa-th-list"></i></a>
-                            </div> --}}
+                            </div>
                             <div class="product-item-selection_area">
                                 <div class="product-short">
                                     <label class="select-label">Ordenar por:</label>
@@ -133,9 +133,9 @@
                                 <div class="inner-slide">
                                     <div class="single-product">
                                         <div class="product-img">
-                                            <a href="single-product.html">
+                                            <a >
                                                 @foreach ($producto->images->slice(0, 2) as $image)
-                                                <img src="{{ $image->url }}"
+                                                <img style="min-width:100%;" src="{{ $image->url }}"
                                                     class="{{ $loop->first ? 'primary-img' : 'secondary-img' }}"
                                                     alt="imagen del producto">
                                             @endforeach

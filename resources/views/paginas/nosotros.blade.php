@@ -120,17 +120,15 @@
                                 </a>
                             </div>
                             <div class="team-content text-center">
-                                <h3>Ruben Rodriguez</h3>
+                                <h3>Ruben Loaiza</h3>
                                 <p>Gerente de la empresa</p>
-                                <a href="#">klirinrube17090@hotmail.com</a>
+                              
                                 <div class="uren-social_link">
                                     <ul>
                                         <li class="facebook">
-                                            <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                <i class="fab fa-facebook"></i>
-                                            </a>
-                                                                     
-                                
+                                            <a href="mailto:klirinrube17090@hotmail.com" data-toggle="tooltip" target="_blank" title="Correo electrónico">
+                                                <i class="fas fa-envelope"></i>
+                                            </a>            
                                         </li>
                                     </ul>
                                 </div>

@@ -5,8 +5,8 @@
                 <div class="col-xl-3 col-lg-2 col-md-4 col-sm-5">
                     <div class="header-logo_area" style="display:flex; flex-direction:row;">
                         <a href="{{route('home.index')}}">
-                            <img style="height:40px;" src="../../dashboard/images/logocarInicio2.png" alt="Uren's Logo">
-                            <h2 style="font-size:12px;">{{$empresa->nombre}}</h2>
+                            <img style="max-width:130px; margin-left:100px;" src="{{asset('/assets/images/logos/logo-automotriz-rale.png')}}" alt="Uren's Logo">
+                            {{-- <h2 style="font-size:12px;">{{$empresa->nombre}}</h2> --}}
                         </a>
                         
                     </div>
@@ -66,7 +66,9 @@
                         <div id="cate-toggle" class="category-menu-list">
                             <ul>
                             @foreach($categorias as $categoria)
-                                <li ><a href="{{route('home.filtradoCategoria',$categoria->id)}}">{{$categoria->nombre}}</a>
+                                <li >
+                                    <a href="{{route('home.filtradoCategoria',$categoria->id)}}">{{$categoria->nombre}}</a>
+                            
                                 </li>
                                 @endforeach                            
                             </ul>
@@ -112,7 +114,7 @@
                                             @endif
                                         {{-- <li><a>Mi perfil</a></li> --}}
                                         @if (Auth::check() && ( Auth()->user()->hasRole('Administrador') || Auth()->user()->hasRole('Vendedor') ) )
-                                                                            <li><a href="{{ url('/admin') }}">Dashboard</a></li>
+                                                                            <li><a href="{{route('admin.dash')}}">Dashboard</a></li>
                                                                         @endif
                                         {{-- <li><a>Ordenes</a></li> --}}
  <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -221,7 +223,7 @@
 
     <div class="header-top_area header-sticky bg--primary">
          <div class="container-fluid">
-            <div class="row">
+            <div class="row" style="height:55px;">
                 <div class="custom-category_col col-12">
                     <div class="category-menu category-menu-hidden">
                         <div class="category-heading">
@@ -232,21 +234,12 @@
                         </div>
                         <div id="cate-toggle" class="category-menu-list">
                             <ul>
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Car Parts</a>
-                                </li>
-                             
+                                @foreach($categorias as $categoria)
+                                <li >
+                                    <a href="{{route('home.filtradoCategoria',$categoria->id)}}">{{$categoria->nombre}}</a>
                             
-                            
-                                <li class="right-menu"><a href="shop-left-sidebar.html">Oils & Fluids</a>
                                 </li>
-                           
-                        
-                                <li class="rx-child"><a href="shop-left-sidebar.html">Uncategorized</a></li>
-                                <li class="rx-child"><a href="shop-left-sidebar.html">Appliances</a></li>
-                                <li class="rx-parent">
-                                    <a class="rx-default">More Categories</a>
-                                    <a class="rx-show">Collapse</a>
-                                </li>
+                                @endforeach     
                             </ul>
                         </div>
                     </div>
@@ -291,7 +284,7 @@
                                             @if(auth()->user()->hasRole('Cliente'))
                                             <li><a href="{{route('deseado.index')}}">Deseados</a></li>
                                             @elseif(auth()->user()->hasRole('Administrador') || auth()->user()->hasRole('Vendedor'))
-                                            <li><a href="{{route('admin.dashboard')}}">Dashboard</a></li>
+                                            <li><a href="{{route('admin.dash')}}">Dashboard</a></li>
                                             @endif  
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                             class="d-none">

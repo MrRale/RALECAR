@@ -340,14 +340,18 @@
           <li class="nav-item nav-profile">
             <div class="nav-link">
               <div class="profile-image">
-                <img src="{{asset('assets/images/avatar/avatar.png')}}" alt="image" />
+                <img style="margin-left:-20px;" src="{{asset('assets/images/avatar/avatar.png')}}" alt="image" />
               </div>
               <div class="profile-name">
-                <p class="name">
-                  Bienvenido {{auth()->user()->name}}
+                <p class="name" style="color:black;">
+                  Bienvenido {{auth()->user()->name}} 
                 </p>
                 <p class="designation" style="color:black;!important">
-                  {{ auth()->user()->getRoleNames() }}
+                  @if(auth()->user()->getRoleNames()=='["Administrador"]')
+                  Administrador
+                  @elseif(auth()->user()->getRoleNames()=='["Vendedor"]')
+                  Vendedor
+                  @endif
                 </p>
               </div>
             </div>
@@ -358,6 +362,8 @@
               <span class="menu-title" style="color:black;!important">Página de inicio</span>
             </a>
           </li>
+
+        
 
           @if(auth()->user()->hasRole('Administrador'))
           <li class="nav-item">
@@ -625,12 +631,7 @@
             </div>
           </li>
 
-          <li class="nav-item">
-            <br />
-          </li>
-          <li class="nav-item">
-            <br />
-          </li>
+         
 
 
 
@@ -647,14 +648,14 @@
       <!-- partial -->
       <div class="main-panel">
         <div class="content-wrapper">
-          {{-- <div class="row grid-margin">
+          <div class="row grid-margin">
             <div class="col-12">
               <div class="card card-statistics">
                 <div class="card-body">
                   <div class="d-flex flex-column flex-md-row align-items-center justify-content-between">
                     <div class="statistics-item">
                       <p>
-                        <a style="text-decoration:none; color: white;" class="nav-link"
+                        <a style="text-decoration:none; color: black;" class="nav-link"
                           href="{{route('admin.verClientes')}}"> <i class="icon-sm fa fa-user mr-2"></i>Clientes</a>
                       </p>
                       <h2>{{$clientes_count}}</h2>
@@ -662,7 +663,7 @@
                     </div>
                     <div class="statistics-item">
                       <p>
-                        <a style="text-decoration:none; color: white;" class="nav-link"
+                        <a style="text-decoration:none; color: black;" class="nav-link"
                           href="{{route('admin.listarMiembros')}}"> <i class="icon-sm fa fa-user mr-2"></i>Miembros</a>
 
                       </p>
@@ -671,7 +672,7 @@
                     </div>
                     <div class="statistics-item">
                       <p>
-                        <a style="text-decoration:none; color: white;" class="nav-link"
+                        <a style="text-decoration:none; color: black;" class="nav-link"
                           href="{{route('producto.index')}}"> <i class="icon-sm fa fa-user mr-2"></i>Productos</a>
 
                       </p>
@@ -702,7 +703,7 @@
 
                     <div class="statistics-item">
                       <p>
-                        <a style="text-decoration:none; color: white;" class="nav-link" href="{{route('deuda.index')}}">
+                        <a style="text-decoration:none; color: black;" class="nav-link" href="{{route('deuda.index')}}">
                           <i class="icon-sm fa fa-user mr-2"></i>Deudas pendientes</a>
 
                       </p>
@@ -713,7 +714,8 @@
                 </div>
               </div>
             </div>
-          </div> --}}
+          </div>
+          
           @yield('contenido')
         </div>
         <!-- content-wrapper ends -->

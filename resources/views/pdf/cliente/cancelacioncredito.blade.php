@@ -4,12 +4,7 @@
 <head>
     <title>Credito cancelado</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    {{-- <link href="{{ public_path('css/app.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script> --}}
+
 </head>
 
 <body>
@@ -97,7 +92,7 @@
         {{-- <img class="img" src="{{public_path('/images/logo/logoPassionReal.jpeg')}}"> --}}
         {{-- <div class="titulo">FACTURA</div>
         <div class="empresa">Automotriz R.A.L.E</div> --}}
-        <img id="imagen" src="https://cdn1.iconfinder.com/data/icons/city-map-elements-2/50/105-512.png">
+        <img id="imagen" src="{{asset('assets/img/logos/logo-automotriz-rale.png')}}">
         <h2 id="name__doc">FACTURA</h2>
         <h5 id="description__team">Automotriz R.A.L.E</h5>
         <h5 id="description__team">Quito-Quitumbe, calle Lirañan y Ñusta</h5>

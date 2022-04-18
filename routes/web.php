@@ -71,7 +71,8 @@ Route::get('marcar_pedido_leido/{notificacion_id}/{pedido_id}', [NotificacionCon
 
 //--------------VISTAS O FUNCIONALIDADES PARA LOS ADMINISTRADORES---//
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/dashboard',[AdminController::class,'dash'])->name('admin.dash');
+  
     Route::resource('categoria', CategoriaController::class);
     Route::resource('producto', ProductoController::class);
     Route::resource('inventario', InventarioController::class);
@@ -94,6 +95,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::post('/productos/filtro', [ProductoController::class, 'productosByCategoriaInventario'])->name('producto.productosByCategoriaInventario');
     Route::get('/productos/inventario/{id}', [ProductoController::class, 'productosByInventario'])->name('producto.productosByInventario');
     Route::get('/pedidos', [AdminController::class, 'pedidos'])->name('admin.pedidos');
+    // Route::get('/',[AdminController::class,'fondo'])->name('admin.fondo');
     Route::get('/pedidos-vendedor', [AdminController::class, 'pedidosVendedor'])->name('admin.pedidosVendedor');
 
     Route::get('/detalle/pedido/{pedido}', [AdminController::class, 'showPedido'])->name('admin.detallePedidos');

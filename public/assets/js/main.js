@@ -361,14 +361,14 @@
 				if (window_width < 768) {
 					$('.product-view-mode a').removeClass('active');
 					$('.product-view-mode').children().first().addClass('active');
-					$('.shop-product-wrap').removeClass('gridview-3 gridview-4 gridview-5').addClass('gridview-2');
+					$('.shop-product-wrap').removeClass('gridview-3 gridview-4 gridview-5').addClass('gridview-5');
 				}
 			},
 			resize: function () {
 				var ww = $(window).width();
 				var activeChild = $('.product-view-mode a.active');
 				var firstChild = $('.product-view-mode').children().first();
-				var defaultView = $('.product-view-mode').data('default');
+				var defaultView = $('.product-view-mode').add('gridview-5');
 
 				if (ww < 1200 && ww > 575) {
 					if (activeChild.hasClass('grid-5')) {
@@ -377,7 +377,7 @@
 							$('.product-view-mode a.grid-4').addClass('active');
 							$('.shop-product-wrap')
 								.removeClass('gridview-2 gridview-3 gridview-5')
-								.addClass('gridview-4');
+								.addClass('gridview-5');
 						} else if (defaultView == 'list') {
 							$('.product-view-mode a.list').addClass('active');
 							$('.shop-product-wrap')
@@ -387,7 +387,7 @@
 							$('.product-view-mode a.grid-3').addClass('active');
 							$('.shop-product-wrap')
 								.removeClass('gridview-2 gridview-4 gridview-5')
-								.addClass('gridview-3');
+								.addClass('gridview-5');
 						}
 					}
 				}
@@ -404,7 +404,7 @@
 							$('.product-view-mode a.grid-3').addClass('active');
 							$('.shop-product-wrap')
 								.removeClass('gridview-2 gridview-4 gridview-5')
-								.addClass('gridview-3');
+								.addClass('gridview-5');
 						}
 					}
 				}
@@ -412,7 +412,7 @@
 					if (ww < 576) {
 						$('.product-view-mode a').removeClass('active');
 						$('.product-view-mode').children().first().addClass('active');
-						$('.shop-product-wrap').removeClass('gridview-3 gridview-4 gridview-5').addClass('gridview-2');
+						$('.shop-product-wrap').removeClass('gridview-3 gridview-4 gridview-5').addClass('gridview-5');
 					} else {
 						if (activeChild.hasClass('grid-2')) {
 							if (ww < 1200) {
@@ -422,7 +422,7 @@
 								$('.product-view-mode a:nth-child(2)').addClass('active');
 								$('.shop-product-wrap')
 									.removeClass('gridview-2 gridview-4 gridview-5')
-									.addClass('gridview-3');
+									.addClass('gridview-5');
 							}
 						}
 					}

@@ -7,7 +7,7 @@
                     <div class="footer-widgets_info">
                         <div class="footer-widgets_logo">
                             <a href="#">
-                                <img style="height:40px;" src="../../dashboard/images/logocarInicio2.png"
+                                <img style="max-width:170px; margin-left:90px;" style="height:40px;" src="{{asset('/assets/images/logos/logo-automotriz-rale1-blanco.png')}}"
                                     alt="Uren's Footer Logo">
                             </a>
                         </div>
@@ -22,8 +22,8 @@
                                 <li class="uren-phone"><span>Contactanos:
                                     </span> <a href="tel://+123123321345">0985685108</a>
                                 </li>
-                                <li class="uren-email"><span>Correo:</span> <a
-                                        href="mailto://automotriz_rale@hotmail.com">automotriz_rale@hotmail.com</a>
+                                <li class="uren-email"><span>Correo electrónico:</span> <a
+                                        href="mailto://automotriz_rale@hotmail.com">automotrizrale@gmail.com</a>
                                 </li>
                             </ul>
                         </div>
@@ -55,10 +55,8 @@
                                 </div>
                                 <div class="footer-widgets">
                                     <ul>
-                                        <li><a href="javascript:void(0)">Acerca de nosotros</a></li>
+                                        <li><a href="{{route('home.nosotros')}}">Acerca de nosotros</a></li>
 
-                                        <li><a href="javascript:void(0)">Políticas</a></li>
-                                        <li><a href="javascript:void(0)">Terminos y condiciones</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -68,7 +66,7 @@
                                 </div>
                                 <div class="footer-widgets">
                                     <ul>
-                                        <li><a href="javascript:void(0)">Contactanos</a></li>
+                                        <li><a href="{{route('home.contactanos')}}">Contactanos</a></li>
 
                                     </ul>
                                 </div>
@@ -81,8 +79,7 @@
                                 <div class="footer-widgets">
                                     <ul>
                                         <li><a href="{{route('cliente.perfil')}}">Mi perfil</a></li>
-                                        <li><a href="{{route('cliente.perfil')}}#account-orders">Historial de
-                                                ordenes</a></li>
+                                     
 
                                     </ul>
                                 </div>
@@ -102,13 +99,7 @@
 
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-6">
-                        <div class="payment">
-                            <a href="#">
-                                <img src="../assets/images/footer/payment/1.png" alt="Uren's Payment Method">
-                            </a>
-                        </div>
-                    </div>
+                  
                 </div>
             </div>
         </div>

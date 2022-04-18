@@ -49,7 +49,7 @@
                             <div class="single-contact-block last-child">
                                 <h4><i class="fa fa-envelope-o"></i> Correo electrónico</h4>
                                 
-                                <p>automotriz_rale@outlook.com</p>
+                                <p>automotrizrale@gmail.com</p>
                             </div>
                         </div>
                     </div>

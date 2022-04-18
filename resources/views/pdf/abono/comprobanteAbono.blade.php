@@ -92,12 +92,7 @@
 
        
     </style>
-
-    {{-- < class="container"> --}}
-        {{-- <img class="img" src="{{public_path('/images/logo/logoPassionReal.jpeg')}}"> --}}
-        {{-- <div class="titulo">FACTURA</div>
-        <div class="empresa">Automotriz R.A.L.E</div> --}}
-        {{-- <img id="imagen" src="https://cdn1.iconfinder.com/data/icons/city-map-elements-2/50/105-512.png"> --}}
+        <img id="imagen" src="{{asset('assets/img/logos/logo-automotriz-rale.png')}}">
         <h2 id="name__doc">RECIBO</h2>
         <h5 id="description__team">Automotriz R.A.L.E</h5>
         <h5 id="description__team">Quito-Quitumbe, calle Lirañan y Ñusta</h5>

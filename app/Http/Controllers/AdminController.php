@@ -28,9 +28,13 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 class AdminController extends Controller
 {
 
-    public function index()
-    {
-        return view('paginas.admin.dashboard');
+  
+    // public function fondo(){
+       
+    // }
+
+    public function dash(){
+        return view('paginas.admin.fondo');
     }
 
 
