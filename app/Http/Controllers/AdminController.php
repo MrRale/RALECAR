@@ -37,6 +37,20 @@ class AdminController extends Controller
         return view('paginas.admin.fondo');
     }
 
+    public function productos($cantidad)
+    {
+        $productos = Producto::all()->take($cantidad);
+        $pdf = PDF::loadView('pdf.listadoProductos.productos', compact('productos')); // se carga la data en la plantilla
+        return $pdf->stream('Reporte de productos.pdf'); //retorna el pdf con el nombre compra_creditos.pdf
+    }
+
+    public function productosByInventario($cantidad, $id)
+    {
+        $productos = Producto::where('inventario_id',$id)->get()->take($cantidad);
+        $pdf = PDF::loadView('pdf.listadoProductos.productosByInventario', compact('productos','id')); // se carga la data en la plantilla
+        return $pdf->stream('Reporte de productos del inventario.pdf'); //retorna el pdf con el nombre compra_creditos.pdf 
+    }
+
 
     public function verMensajes()
     {

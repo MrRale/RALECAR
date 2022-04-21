@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Pedido del cliente</title>
+    <title>Productos por inventario</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  
 </head>
@@ -92,88 +92,51 @@
 
         <img id="imagen" src="../public/assets/images/logos/logo-automotriz-rale.png">
       
-        <h2 id="name__doc">FACTURA</h2>
+        <h2 id="name__doc">Productos del inventario {{$id}}</h2>
         <h5 id="description__team">Automotriz R.A.L.E</h5>
         <h5 id="description__team">Quito-Quitumbe, calle Lirañan y Ñusta</h5>
 <br/>
-<table class="table table-light">
-    <thead class="thead-light">
-        <tr>
-            <th>FACTURAR A</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
-            <th>N° FACTURA: {{$pedido->id}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="fila">
-            <td>Cliente: {{$pedido->user->name}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FECHA:{{$pedido->fecha}}</th>
-        </tr>
-        <tr class="fila">
-            <td>C.I: {{$cliente->cedula}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-           
-        </tr>
-        <tr class="fila">
-            <td>Dirección: {{$cliente->direccion}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          
-        </tr>
-        <tr class="fila">
-            <td>Teléfono: {{$cliente->telefono}}</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-         
-        </tr>
-    </tbody>
-</table>
+
 
 <table class="table table-light" id="tabla__datos" align="center">
     <thead class="thead-light">
         <tr id="cabecera__tabla">
-            <th>CANTIDAD</th>
+            <th>N°</th>
             <th>CÓDIGO</th>
             <th>PRODUCTO</th>
-            <th>PRECIO UNITARIO</th>
+            <th>P.UNITARIO</th>
+           <th>CANTIDAD</th>
             <th>SUBTOTAL</th>
         </tr>
     </thead>
     <tbody>
-        @foreach($pedidos as $key => $p)
+        @foreach($productos as $key => $p)
         <tr class="fila">
-            <td>{{$p->cantidad}}</td>
-            <td>{{$p->producto->codigo}}</td>
-            <td>{{$p->producto->nombre}}</td>
+            <td>{{$key+1}}</td>
+            <td>{{$p->codigo}}</td>
+            <td>{{$p->nombre}}</td>
             <td>{{$p->precio}}</td>
-            <td>${{$p->precio*$p->cantidad}}</td>
-            {{-- <hr/> --}}
+            <td>{{$p->stock}}</td>
+            <td>${{$p->precio*$p->stock}}</td>
         </tr>
         @endforeach
     </tbody>
     <tfoot>
+
+        @php 
+        foreach($productos as $producto)
+        {
+            $total = 0;
+            $total = $total + $producto->stock*$producto->precio;
+        }
+        @endphp
      
-          <tr class="fila__footer">
-            <td></td> <td></td><td></td><td></td>
-            <th >TOTAL<p id="total">${{$p->precio*$p->cantidad}}</p> </th>
-           
-     
-          </tr>
-      </tfoot>
+        <tr class="fila__footer">
+          <td></td> <td></td><td></td><td></td>
+          <th></th>
+          <th >TOTAL<p id="total">${{$total}}</p> </th>   
+        </tr>
+    </tfoot>
 </table>
 
 </body>

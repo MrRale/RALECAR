@@ -18,7 +18,7 @@
       <div class="filtro" style=" margin-left:-10px; display:flex; justify-content:center; max-width:250px;">
         <form id="formFiltrarProductos" action="{{route('productos.filtrar2')}}" method="POST" class="d-inline">
           @csrf
-          <select id="filtro" class="js-example-basic-single w-100 my-3" onchange="filtrar();" name="cantidad">
+          <select id="filtro" class="js-example-basic-single w-100 my-3 fitros form-control" onchange="filtrar();" name="cantidad">
             <option selected disable>Filtrar por cantidad</option>
             <option value="1">1</option>
             <option value="5">5</option>
@@ -30,6 +30,26 @@
             <option value="1000">Todos</option>
         </select>
         </form>
+      </div>
+      <div style="display:flex; align-items:center;  justify-content:flex-end; margin-bottom:10px;">
+       
+        <div class="filtro" style=" margin-left:-10px; margin-right:5px; display:flex; justify-content:center; max-width:250px;">
+          <form id="formFiltrarProductos" action="{{route('productos.filtrar2')}}" method="POST" class="d-inline">
+            @csrf
+            <select id="cantidadImprimir" onchange="seleccionCantidad();" class="js-example-basic-single w-100 my-3 form-control" name="cantidadImprimir">
+              {{-- <option selected disable>Cantidad a imprimir</option> --}}
+              <option value="1">1</option>
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="15">15</option>
+              <option value="20">20</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="1000">Todos</option>
+          </select>
+          </form>
+        </div>
+        <a id="pdfProductos"  onclick="imprimirProductos();" title="Imprimir reporte de productos de acuerdo a la cantidad filtrada"  class="btn btn-danger"><i class="fas fa-file-pdf"></i></a>
      
       </div>
       <div class="row">
@@ -80,6 +100,7 @@
 
 
  <script>
+   var cantidadSeleccionada = 1;
 
 function eliminarProducto(producto){
   var form = document.getElementById('deleteproducto'+producto.id);
@@ -104,8 +125,21 @@ function eliminarProducto(producto){
 
 }
 
+function seleccionCantidad()
+{
+  var cselected = document.getElementById("cantidadImprimir").value;
+  cantidadSeleccionada =cselected;
+alert(cantidadSeleccionada);
+}
+
+function imprimirProductos()
+{
+  
+  window.location.href="/admin/pdf/productos/"+cantidadSeleccionada;
+}
+
 function filtrar(){
-    var opcion = document.getElementById("filtro");
+    
     var form = document.getElementById('formFiltrarProductos');
     form.submit();
   }

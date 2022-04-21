@@ -79,6 +79,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('proveedor', ProveedorController::class);
     Route::resource('deuda', DeudaController::class);
 
+    
+
     Route::get('/notificacion/eliminar/{id}', [NotificacionController::class, 'eliminar'])->name('notificacion.eliminar');
 
     Route::get('/deuda/abonar/{id}', [DeudaController::class, 'abonarDeuda'])->name('deuda.abonarProveedor');
@@ -130,6 +132,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('/pdf/cliente/orden/{id}', [AdminController::class, 'pdfOrdenVendedor'])->name('admin.pdfOrdenVendedor');
     Route::get('/pdf/cliente/abono/{idabono}/{idcliente}/{saldo}', [AdminController::class, 'pdfAbono'])->name('admin.pdfAbono');
     Route::get('/pdf/cliente/credito-cancelado/{id}',[AdminController::class,'pdfCreditoCancelado'])->name('admin.pdfCreditoCancelado');
+    Route::get('/pdf/productos/{cantidad}',[AdminController::class, 'productos'])->name('admin.pdfProductos');
+    Route::get('/pdf/productos/{cantidad}/inventario/{id}',[AdminController::class,'productosByInventario'])->name('admin.pdfProductosByInventario');
 
     //===========VISTAS PARA EL VENDEDOR, PERO QUE TMBN EL ADMIN TENDRA ACCESO =======//
     Route::get('/venta/agregar', [AdminController::class, 'agregarVenta'])->name('admin.agregarVenta');

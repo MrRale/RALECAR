@@ -58,7 +58,7 @@
                     {{method_field('DELETE')}}
                         <a id="botoncol" onclick="eliminarInventario({{$inventario}});" class="btn btn-outline-danger" ><i class="fas fa-trash"></i></a>
                         <a href="{{route('producto.productosByInventario',$inventario->id)}}" id="botoncol" class="btn btn-outline-primary " title ="Productos por inventario"><i class="fas fa-filter"></i></a>
-            
+                      {{-- <a href="{{route('admin.pdfProductosByInventario',$inventario->id)}}" id></a> --}}
                       </form>
                     </td>
                 </tr>
