@@ -382,6 +382,25 @@
           </li>
           @endif
 
+          @if(auth()->user()->hasRole('Administrador'))
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#page-layouts5" aria-expanded="false"
+              aria-controls="page-layouts">
+              <i class="fab fa-trello menu-icon" style="color:black;!important"></i>
+              <span class="menu-title" style="color:black;!important">Ventas</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="page-layouts5">
+              <ul class="nav flex-column sub-menu">
+                <li class="newitem d-none d-lg-block"> <a class="nav-link"
+                    href="{{route('admin.agregarVenta')}}">Agregar una venta</a></li>
+
+                <li class="newitem"> <a class="nav-link" href="{{route('admin.misVentas')}}">Ver mis ventas</a></li>
+              </ul>
+            </div>
+          </li>
+
+          @endif
           @if(auth()->user()->hasRole('Vendedor'))
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#page-layouts5" aria-expanded="false"
@@ -615,13 +634,13 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#page-layouts12" aria-expanded="false"
+            <a class="nav-link" data-toggle="collapse" href="#page-layouts16" aria-expanded="false"
               aria-controls="page-layouts">
               <i class="fas fa-bell menu-icon" style="color:black;!important"></i>
               <span class="menu-title" style="color:black;!important">Notificaciones</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="page-layouts12">
+            <div class="collapse" id="page-layouts16">
               <ul class="nav flex-column sub-menu">
                 <li class="newitem"> <a class="nav-link" href="{{route('notificacion.todas')}}">Ver notificaciones</a>
                 </li>
@@ -687,7 +706,7 @@
                         <i class="icon-sm fas fa-chart-line mr-2"></i>
                         Ganancias del mes actual
                       </p>
-                      <h2>{{$ganancia}}</h2>
+                      <h2>${{$ganancia}}</h2>
                       <label class="badge badge-outline-success badge-pill"></label>
                     </div>
 
@@ -707,7 +726,7 @@
                           <i class="icon-sm fa fa-user mr-2"></i>Deudas pendientes</a>
 
                       </p>
-                      <h2>{{$deudatotal}}</h2>
+                      <h2>${{$deudatotal}}</h2>
                       <label class="badge badge-outline-danger badge-pill"></label>
                     </div>
                   </div>

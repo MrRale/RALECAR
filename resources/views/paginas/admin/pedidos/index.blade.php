@@ -55,7 +55,7 @@
                     <td>{{$pedido->descripcion}}</td>
                     <td>{{$pedido->user->name}}</td>
                     <td>{{$pedido->estado_pedido}}</td>
-                    <td>{{sprintf('%.2f',$pedido->total)}}</td>
+                    <td>${{sprintf('%.2f',$pedido->total)}}</td>
                     <td>
                    
                     

@@ -102,7 +102,7 @@
                     </td>
                     <td>{{$detalle->producto->codigo}}</td>
                     <td>{{$detalle->cantidad}}</td>
-                    <td>{{sprintf('%.2f',$detalle->precio)}}</td>
+                    <td>${{sprintf('%.2f',$detalle->precio)}}</td>
                     <td>${{sprintf('%.2f',$detalle->cantidad * $detalle->precio)}}</td>
                     
                 </tr>
@@ -164,7 +164,7 @@ if($orden->meses>3)
 <tr>
   <td></td><td></td><td></td>
   <td>Cuota</td>
-  <td>{{sprintf('%.2f',$cuota)}}</td>
+  <td>${{sprintf('%.2f',$cuota)}}</td>
   <td></td>
 </tr>
 @endif

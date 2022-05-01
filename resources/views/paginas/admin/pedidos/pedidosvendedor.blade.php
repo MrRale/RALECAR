@@ -58,7 +58,7 @@
                   
                     <td>{{$vendedores[$key]->name}}</td>
                     <td>{{$orden->estado_pedido}}</td>
-                    <td>{{sprintf('%.2f',$orden->total_pagar)}}</td>
+                    <td>${{sprintf('%.2f',$orden->total_pagar)}}</td>
                     <td>
                    
                     

@@ -35,7 +35,7 @@
     <div class="card-body">
       <div style="display:flex; justify-content:space-between;">
         <h4 class="card-title">Deudas</h4>
-        <h5 class="card-title">Deuda total: {{$total}}</h5>
+        <h5 class="card-title">Deuda total: ${{$total}}</h5>
       </div>
      
       @if(count($deudas)>0)
@@ -58,7 +58,7 @@
               <tbody>
                   @foreach($deudas as $deuda)
                 <tr>
-                    <td>{{$deuda->saldo}}</td>
+                    <td>${{$deuda->saldo}}</td>
                     <td>{{$deuda->fecha}}</td>
                     <td>{{$deuda->proveedor->nombre}}</td>
                    <td>

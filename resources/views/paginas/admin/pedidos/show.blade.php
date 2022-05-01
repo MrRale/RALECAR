@@ -95,8 +95,8 @@
                     </td>
                     <td>{{$detalle->producto->codigo}}</td>
                     <td>{{$detalle->cantidad}}</td>
-                    <td>{{sprintf('%.2f',$detalle->precio)}}</td>
-                    <td>{{sprintf('%.2f',$detalle->cantidad * $detalle->precio)}}</td>
+                    <td>${{sprintf('%.2f',$detalle->precio)}}</td>
+                    <td>${{sprintf('%.2f',$detalle->cantidad * $detalle->precio)}}</td>
                     
                 </tr>
 @endforeach

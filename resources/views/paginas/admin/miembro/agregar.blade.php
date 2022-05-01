@@ -26,33 +26,33 @@
           @csrf
           <div class="form-group">
             <label for="exampleInputName1">Nombre</label>
-            <input name="name" type="text" class="form-control" id="exampleInputName1" placeholder="nombre">
+            <input name="name" type="text" class="form-control" id="exampleInputName1" placeholder="nombre" required>
           </div>
           <div class="form-group">
             <label for="exampleInputName1">Cédula</label>
-            <input name="cedula" type="text" class="form-control" id="exampleInputName1" placeholder="cedula">
+            <input name="cedula" type="text" class="form-control" id="exampleInputName1" placeholder="cedula" required>
           </div>
 
           <div class="form-group">
             <label for="exampleInputName1">RUC</label>
-            <input name="ruc" type="text" class="form-control" id="exampleInputName1" placeholder="ruc">
+            <input name="ruc" type="text" class="form-control" id="exampleInputName1" placeholder="ruc" required>
           </div>
           <div class="form-group">
             <label for="exampleInputName1">Teléfono</label>
-            <input name="telefono" type="text" class="form-control" id="exampleInputName1" placeholder="Teléfono">
+            <input name="telefono" type="text" class="form-control" id="exampleInputName1" placeholder="Teléfono" required>
           </div>
           <div class="form-group">
             <label for="exampleInputName1">Correo electrónico</label>
-            <input name="email" type="email" class="form-control" id="exampleInputName1" placeholder="correo electrónico">
+            <input name="email" type="email" class="form-control" id="exampleInputName1" placeholder="correo electrónico" required>
           </div>
           <div class="form-group">
             <label for="exampleInputName1">Contraseña</label>
-            <input name="password" type="password" class="form-control" id="exampleInputName1" placeholder="Contraseña">
+            <input name="password" type="password" class="form-control" id="exampleInputName1" placeholder="Contraseña" required>
           </div>
           
                 <div class="form-group">
                   <label>Asigne un rol al miembro</label>
-                  <select class="js-example-basic-single w-100" name="rol_id">
+                  <select class="form-control js-example-basic-single w-100" name="rol_id" required>
                       @foreach ($roles as $rol)
                       <option value="{{$rol->id}}">{{$rol->name}}</option>
                       @endforeach

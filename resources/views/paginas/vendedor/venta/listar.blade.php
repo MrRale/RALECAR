@@ -59,7 +59,7 @@
                     <td>{{$orden->nombres}}</td>
                     @endif
                     <td>{{$orden->estado_pedido}}</td>
-                    <td>{{$orden->total_pagar}}</td>
+                    <td>${{$orden->total_pagar}}</td>
                     <td>   
                       <a href="{{route('admin.detalleVenta',$orden->id)}}" id="botoncol" class="btn btn-outline-info " title ="Ver detalle"><i class="fas fa-eye"></i></a>
                     </td>

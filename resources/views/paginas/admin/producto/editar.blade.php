@@ -32,7 +32,7 @@
           
         </p>
         
-        <form class="forms-sample" enctype="multipart/form-data" action="{{url('/admin/producto/'.$producto->id)}}" method="POST">
+        <form class="forms-sample" id="formEditarProducto" enctype="multipart/form-data" action="{{url('/admin/producto/'.$producto->id)}}" method="POST">
           {{method_field('PATCH')}}
           @csrf
           <div class="form-group">
@@ -108,11 +108,36 @@
             @endforeach
        </select>
   </div>
-          <button type="submit" class="btn btn-primary mr-2">Guardar cambios</button>
+          <a onclick="editarProducto({{$producto}});"  class="btn btn-primary mr-2">Guardar cambios</a>
           <button class="btn btn-light">Cancelar</button>
         </form>
       </div>
     </div>
   </div>
+
+  <script>
+       function editarProducto(producto){
+  var form = document.getElementById('formEditarProducto');
+  swal({
+      title: "Estas seguro que quieres editar el producto "+producto.nombre+" ?",
+      text: "Al confirmar, los datos del producto cambiaran!",
+      icon: "warning",
+      buttons: [
+        'No, cancelar!',
+        'Si, estoy seguro!'
+      ],
+      dangerMode: true,
+    }).then(function(isConfirm) {
+      if (isConfirm) {
+       
+          form.submit(); // <--- submit form programmatically
+      
+      } else {
+        swal("Cancelado", "El producto no ha sido editado", "info");
+      }
+    })
+
+}
+  </script>
 
 @endsection

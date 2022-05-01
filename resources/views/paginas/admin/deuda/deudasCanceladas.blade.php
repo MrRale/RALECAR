@@ -33,7 +33,7 @@
              <tr>
                   <td>{{$cancelado->proveedor->nombre}}</td>
                   <td>{{$cancelado->proveedor->telefono}}</td>
-                  <td>{{$cancelado->saldo}}</td>
+                  <td>${{$cancelado->saldo}}</td>
                   <td>{{$cancelado->proveedor->empresa}}</td>
                   <td>
                       <a onclick="eliminarDeudaCancelada({{$cancelado}});" id="botoncol" class="btn btn-outline-danger" title="Eliminar"><li class="fas fa-trash"></li></a>

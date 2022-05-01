@@ -26,8 +26,8 @@ class User extends Authenticatable
         'cedula',
         'ruc',
         'telefono',
-        'direccion',
-        'empresa'
+        // 'direccion',
+        // 'empresa'
     ];
 
    

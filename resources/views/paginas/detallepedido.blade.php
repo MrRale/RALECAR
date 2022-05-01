@@ -55,8 +55,8 @@
                                                         <td><a class="account-order-id" href=""><img style="max-width:100px" src="{{$pedido->producto->images->pluck('url')[0]}}" /></a></td>
                                                         <td><a class="account-order-id" href="">{{$pedido->producto->nombre}}</a></td>
                                                         <td><a class="account-order-id" href="">{{$pedido->cantidad}}</a></td>
-                                                        <td><a class="account-order-id" href="">{{$pedido->precio}}</a></td>
-                                                        <td>{{$pedido->cantidad * $pedido->precio}}</td>                             
+                                                        <td><a class="account-order-id" href="">${{$pedido->precio}}</a></td>
+                                                        <td>${{$pedido->cantidad * $pedido->precio}}</td>                             
                                                     </tr>
                                                     @endforeach
                                                 </tbody>

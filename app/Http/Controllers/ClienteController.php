@@ -41,7 +41,22 @@ public function compraFallida(){
         $user_id = auth::id();
         $user = User::find($user_id);
 
-        
+        $campos = [
+            'name' => 'required|string',
+            'cedula' => 'required|string|min:10|max:10',
+            'telefono' => 'required|min:10|max:10',
+        ];
+
+        $mensaje = [
+            'required' => ':attribute es requerido',
+            'cedula.min' => 'La cedula debe contener 10 digitos',
+            'cedula.max' => 'La cedula debe contener 10 digitos',
+            'telefono.min' => 'El telefono debe contener 10 digitos',
+            'telefono.max' => 'El tlefono debe contener 10 digitos',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
         if($request['password_nueva_confirm'] != $request['password_nueva'])
             return back()->with('mensaje','Asegurese de que las contraseñas sean iguales');
      
@@ -51,9 +66,9 @@ public function compraFallida(){
             "name"=>$request['name'],
             "cedula"=>$request['cedula'],
             "telefono"=>$request['telefono'],
-            "direccion"=>$request['direccion'],
-            "empresa"=>$request['empresa'],
-            "email"=>$request['email'],
+            // "direccion"=>$request['direccion'],
+            // "empresa"=>$request['empresa'],
+            // "email"=>$request['email'],
             "password"=>$passnueva
         ]);
 

@@ -60,8 +60,31 @@
                                         <div class="country-select clearfix">
                                             <label>Ciudad <span class="required">*</span></label>
                                             <select name="ciudad" class="myniceselect nice-select wide">
-                                                <option data-display="Quito">Quito</option>
-                                                <option value="SantoDomingo">Santo Domingo</option>
+                                                <option value="Azuay" selected="selected">Azuay</option>  
+                                                <option value="Cañar">Cañar</option>  
+                                                <option value="Loja">Loja</option>  
+                                                <option value="Carchi">Carchi</option>  
+                                                <option value="Imbabura">Imbabura</option>  
+                                                <option value="Pichincha">Pichincha</option>  
+                                                <option value="Cotopaxi">Cotopaxi</option>  
+                                                <option value="Tungurahua">Tungurahua</option>  
+                                                <option value="Bolívar">Bolívar</option>  
+                                                <option value="Chimborazo">Chimborazo</option>  
+                                                <option value="Sto. Domingo de los Tsachilas">Sto. Domingo de los Tsachilas</option>  
+                                                <option value="Esmeraldas">Esmeraldas</option>  
+                                                <option value="Manabí">Manabí</option>  
+                                                <option value="Guayas">Guayas</option>  
+                                                <option value="Los Ríos">Los Ríos</option>  
+                                                <option value="El Oro">El Oro</option>  
+                                                <option value="Santa Elena">Santa Elena</option>  
+                                                <option value="Sucumbíos">Sucumbíos</option>  
+                                                <option value="Napo">Napo</option>  
+                                                <option value="Pastaza">Pastaza</option>  
+                                                <option value="Orellana">Orellana</option>  
+                                                <option value="Morona Santiago">Morona Santiago</option>  
+                                                <option value="Zamora Chinchipe">Zamora Chinchipe</option>  
+                                                <option value="Galápagos">Galápagos</option>  
+                                                <option value="Antártida Ecuatoriana">Antártida Ecuatoriana</option>  
                                             </select>
                                         </div>
                                     </div>

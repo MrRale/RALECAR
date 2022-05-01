@@ -32,7 +32,7 @@
 
                 </p>
 
-                <form class="forms-sample" enctype="multipart/form-data" action="{{route('admin.updatePerfilAdministracion')}}" method="POST">
+                <form class="forms-sample" id="formEditarDatos" enctype="multipart/form-data" action="{{route('admin.updatePerfilAdministracion')}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="nombre">Nombre</label>
@@ -59,10 +59,40 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary mr-2">Guardar cambios</button>
+                    <a onclick="editarDatos({{$user}});" class="btn btn-primary mr-2">Guardar cambios</a>
                     <button class="btn btn-light">Cancelar</button>
                 </form>
             </div>
         </div>
     </div>
+
+
+    <script>
+
+        function editarDatos(administrador){
+          var form = document.getElementById('formEditarDatos');
+          swal({
+              title: "Estas seguro que quieres editar los datos de "+administrador.name+" ?",
+              text: "Al confirmar tus datos serán cambiados",
+              icon: "warning",
+              buttons: [
+                'No, cancelar!',
+                'Si, estoy seguro!'
+              ],
+              dangerMode: true,
+            }).then(function(isConfirm) {
+              if (isConfirm) {
+               
+                  form.submit(); // <--- submit form programmatically
+              
+              } else {
+                swal("Cancelado", "Tus datos no fueron editados", "info");
+              }
+            })
+        
+        }
+        
+        
+          </script>
+
 @endsection

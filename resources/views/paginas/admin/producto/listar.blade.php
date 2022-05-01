@@ -102,6 +102,8 @@
  <script>
    var cantidadSeleccionada = 1;
 
+
+
 function eliminarProducto(producto){
   var form = document.getElementById('deleteproducto'+producto.id);
   swal({

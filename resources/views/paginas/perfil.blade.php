@@ -3,6 +3,9 @@
 
 @include('vistas-parciales.head')
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+
 <body class="template-color-1">
 
     <div class="main-wrapper">
@@ -127,53 +130,43 @@
                                 </div> --}}
                                 <div class="tab-pane fade" id="account-details" role="tabpanel" aria-labelledby="account-details-tab">
                                     <div class="myaccount-details">
-                                        <form action="{{route('cliente.actualizarPerfil')}}" method="POST"  class="uren-form">
+                                        <form id="formEditarDatos" action="{{route('cliente.actualizarPerfil')}}" method="POST"  class="uren-form">
                                             @csrf
-                                            {{-- cedula
-                                                ruc
-                                                telefono
-                                                direccion
-                                                empresa --}}
+                                       
                                             <div class="uren-form-inner">
                                                 <div class="single-input single-input-half">
                                                     <label for="account-details-firstname">Nombre*</label>
-                                                    <input type="text" name="name" id="account-details-firstname">
+                                                    <input type="text" value="{{$cliente->name}}" name="name" id="account-details-firstname" required>
                                                 </div>
                                                 <div class="single-input single-input-half">
                                                     <label for="account-details-firstname">Cédula*</label>
-                                                    <input type="text" name="cedula" id="account-details-firstname">
+                                                    <input type="text" value="{{$cliente->cedula}}" name="cedula" id="account-details-firstname" required>
                                                 </div>
                                                 <div class="single-input single-input-half">
                                                     <label for="account-details-firstname">Teléfono*</label>
-                                                    <input type="text" name="telefono" id="account-details-firstname">
+                                                    <input type="text" value="{{$cliente->telefono}}" name="telefono" id="account-details-firstname" required>
                                                 </div>
-                                                <div class="single-input single-input-half">
-                                                    <label for="account-details-firstname">Dirección*</label>
-                                                    <input type="text" name="direccion" id="account-details-firstname">
-                                                </div>
-                                                <div class="single-input single-input-half">
-                                                    <label for="account-details-firstname">Empresa*</label>
-                                                    <input type="text" name="empresa" id="account-details-firstname">
-                                                </div>
-                                                <div class="single-input single-input-half">
+                                         
+                                            
+                                                {{-- <div class="single-input single-input-half">
                                                     <label for="account-details-email">Correo electrónico*</label>
-                                                    <input type="email" name="email" id="account-details-email">
-                                                </div>
+                                                    <input type="email" name="email" id="account-details-email" >
+                                                </div> --}}
                                                 <div class="single-input single-input-half">
                                                     <label for="account-details-oldpass">Contraseña actual (En blanco si no quiere cambiarla)</label>
-                                                    <input type="password" name="password_actual" id="account-details-oldpass">
+                                                    <input type="password" name="password_actual" id="account-details-oldpass" >
                                                 </div>
                                                 <div class="single-input single-input-half">
                                                     <label for="account-details-newpass">Contraseña nueva (En blanco si no quiere cambiarla)</label>
-                                                    <input type="password" name="password_nueva" id="account-details-newpass">
+                                                    <input type="password" name="password_nueva" id="account-details-newpass" >
                                                 </div>
                                                 <div class="single-input single-input-half">
                                                     <label for="account-details-confpass">Confirmar nueva contraseña</label>
-                                                    <input type="password" name="password_nueva_confirm" id="account-details-confpass">
+                                                    <input type="password" name="password_nueva_confirm" id="account-details-confpass" >
                                                 </div>
                                                 <div class="single-input" style="display:flex; justify-content:center;">
-                                                    <button class="uren-btn uren-btn_dark" type="submit"><span>GUARDAR
-                                                    CAMBIOS</span></button>
+                                                    <a onclick="editarDatos({{$cliente}});" class="uren-btn uren-btn_dark" ><span>GUARDAR
+                                                    CAMBIOS</span></a>
                                                 </div>
                                             </div>
                                         </form>
@@ -197,8 +190,37 @@
 
     </div>
 
-    <!-- JS
-============================================ -->
+
+
+          <script>
+
+        function editarDatos(cliente){
+          
+          var form = document.getElementById('formEditarDatos');
+          swal({
+              title: "Estas seguro que quieres editar los datos de "+cliente.name+" ?",
+              text: "Al confirmar tus datos serán cambiados",
+              icon: "warning",
+              buttons: [
+                'No, cancelar!',
+                'Si, estoy seguro!'
+              ],
+              dangerMode: true,
+            }).then(function(isConfirm) {
+              if (isConfirm) {
+               
+                  form.submit(); // <--- submit form programmatically
+              
+              } else {
+                swal("Cancelado", "Tus datos no fueron editados", "info");
+              }
+            })
+        
+        }
+        
+        
+          </script>
+
 
     <!-- jQuery JS -->
     <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -241,6 +263,7 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    @include('sweetalert::alert')
 
 </body>
 

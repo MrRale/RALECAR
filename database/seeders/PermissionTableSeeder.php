@@ -9,11 +9,7 @@ use App\Models\User;
 
 class PermissionTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
         //CREACION DE LOS ROLES DEL SISTEMA
@@ -28,8 +24,6 @@ class PermissionTableSeeder extends Seeder
          'cedula'=>'2100463188',
          'ruc'=>'2100463188001',
          'telefono'=>'0988703049',
-        //  'direccion'=>'Av. Los Olivos y Juan Montalvo',
-        //  'empresa'=>'RALE',
         'name'=>'Rafael Loaiza',
         'email'=>'rafael@gmail.com',
         'password'=>'$2y$10$UWrWMU9GPWytScvIDu5fMOJTfiCvqA/ZpjxTiu7Js0310ySTjuYPy'//morales98
@@ -42,8 +36,6 @@ class PermissionTableSeeder extends Seeder
         'cedula'=>'2100463187',
          'ruc'=>'2100463187001',
          'telefono'=>'0988703045',
-        //  'direccion'=>'Av. San Pablo y 9 de octubre',
-        //  'empresa'=>'ESPOCH',
         'name'=>'Andres',
         'email'=>'gamr98@outlook.es',
         'password'=>'$2y$10$UWrWMU9GPWytScvIDu5fMOJTfiCvqA/ZpjxTiu7Js0310ySTjuYPy'//morales98
@@ -56,8 +48,6 @@ class PermissionTableSeeder extends Seeder
     'cedula'=>'0101415054',
     'ruc'=>'0101415054001',
     'telefono'=>'0988703046',
-    // 'direccion'=>'Av. Jorge Chiriboga',
-    // 'empresa'=>'EPACEM',
    'name'=>'Pablo',
    'email'=>'pablo@gmail.com',
     'password'=>'$2y$10$UWrWMU9GPWytScvIDu5fMOJTfiCvqA/ZpjxTiu7Js0310ySTjuYPy'//morales98
@@ -71,14 +61,10 @@ $cliente->assignRole('Vendedor');//asignamos el rol de administrador al usuario 
         'cedula'=>'2100463183',
         'ruc'=>'2100463183001',
         'telefono'=>'0988703044',
-        // 'direccion'=>'Av. Jorge Chiriboga',
-        // 'empresa'=>'EPACEM',
        'name'=>'Sara Socas',
        'email'=>'sara@gmail.com',
         'password'=>'$2y$10$UWrWMU9GPWytScvIDu5fMOJTfiCvqA/ZpjxTiu7Js0310ySTjuYPy'//morales98
     ]);
     $cliente->assignRole('Cliente');//asignamos el rol de administrador al usuario creado
-   
-
 }
 }

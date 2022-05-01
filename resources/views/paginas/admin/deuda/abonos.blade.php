@@ -39,7 +39,7 @@
                
                   <td>{{$key+1}}</td>
                   <td>{{$c->fecha}}</td>
-                <td>{{$c->monto}}</td>
+                <td>${{$c->monto}}</td>
                 
                   <td>
                       {{-- <a target="_blank" id="botoncol" title="Generar recibo" href="{{route('admin.pdfAbono',[$c->id,$cliente->id,$saldo])}}" class="btn btn-danger"><li class="fa fa-file-pdf"></li></a>
