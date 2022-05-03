@@ -301,15 +301,11 @@
  var tr3 = document.getElementById('tr3').style;
  var tr4 = document.getElementById('tr4').style;
 function opcionRuc(){
-    alert('seleccionando opcion')
-    alert('Estado de formPago:'+opcionFormaPago.disabled);
-   
     opcionFormaPago.disabled = false;
     var opcionruc = document.getElementById('opcionruc').value;
     if(opcionruc === "si"){//SI TIENE RUC
         document.getElementById('ruc').classList.remove('hidden');
         if(band==true){
-        alert('el formpago ya fue usado')
         var impuestoiva = totalprecios*(iva/100);
         textoIva.textContent = impuestoiva.toFixed(2);
         subtotal = parseFloat(totalprecios)+parseFloat(impuestoiva);
@@ -338,12 +334,9 @@ function opcionRuc(){
 
 function formaPago(){
     band=true;
-    alert('valor del subtotal: '+subtotal);
     opcionFormaPago = document.getElementById('formapago').value; //actualizamos el valor de opcionFormaPago
-    alert(opcionFormaPago);
     if(opcionFormaPago==2)//CREDITO
     {
-        alert('valor del subtotal dentro de opcion2: '+subtotal);
         tr1.display=''; //habilitamos el input de entrada
         tr2.display=''; //habilitamos el input de entrada
         tr3.display=''; //cuota y mesescuota
@@ -353,54 +346,66 @@ function formaPago(){
         document.getElementById('mesescuota').textContent = mesesdiferir;
         document.getElementById('meses').value = mesesdiferir;
         if(mesesdiferir>3){
-            alert("entrada:"+entrada+", meses diferir:"+mesesdiferir);
             let resto = subtotal - entrada;
-            alert("resto:"+resto);
             let interesPagar = resto * (mesesdiferir*(interes/100));
-           
-           
-            alert('interes: '+interesPagar);
             totalPagar = (resto + interesPagar).toFixed(2);
             let cuota = (totalPagar/mesesdiferir).toFixed(2);
             document.getElementById('cuota').textContent= cuota;
             textoTotalPagar.textContent = totalPagar;
             document.getElementById('totalreq').value = totalPagar;
-            alert('totalpagar:'+totalPagar);
         }else{
             let resto = subtotal - entrada;
             document.getElementById('cuota').textContent = (resto/mesesdiferir).toFixed(2);
              totalPagar = resto;
-             document.getElementById('totalreq').value = totalPagar.toFixed(2);
+             document.getElementById('totalreq').value = totalPagar;
             textoTotalPagar.textContent = totalPagar.toFixed(2);
         }
     }else{//CONTADO
-        alert('valor del subtotal dentro de opcion1: '+subtotal);
        tr2.display='none'; tr1.display='none';tr3.display='none';
             if(subtotal>100){
                let  descuentoSubtotal = (subtotal*(descuento/100));
                document.getElementById('descuento').textContent = descuentoSubtotal.toFixed(2);
-               alert('descuentoSubtotal:'+descuentoSubtotal);
                 totalPagar = subtotal-descuentoSubtotal;
                
-                alert('total por pargar menos el descuento: '+totalPagar);
                 textoTotalPagar.textContent = totalPagar.toFixed(2);
-                document.getElementById('totalreq').value = totalPagar.toFixed(2);
+                document.getElementById('totalreq').value = totalPagar;
             }else{
-                alert("valor de subtotal cuando subtotal  <100 :"+subtotal);
+          
                 totalPagar = subtotal;
-                document.getElementById('totalreq').value = totalPagar.toFixed(2);
-                alert('valor de totalPagar:'+totalPagar);
+                document.getElementById('totalreq').value = totalPagar;
+              
                 textoTotalPagar.textContent = totalPagar;
             }
     }
 }
 
-function leerEntrada(){
-    // tr2.display='';
+function leerEntrada(e){
+    if(document.getElementById('mesesdiferir').value=='' || document.getElementById('mesesdiferir').value == null){
+        alert('No olvide agregar los meses a diferir para el cálculo de las cuotas del credito');
+    }else{
+        var entrada = e.target.value;
+        var mesesdiferir = document.getElementById('mesesdiferir').value;
+        document.getElementById('mesescuota').textContent = mesesdiferir;
+        document.getElementById('meses').value = mesesdiferir;
+        if(mesesdiferir>3){
+            let resto = subtotal - entrada;
+            let interesPagar = resto * (mesesdiferir*(interes/100));
+            totalPagar = (resto + interesPagar).toFixed(2);
+            document.getElementById('totalreq').value = totalPagar;
+            let cuota = (totalPagar/mesesdiferir).toFixed(2);
+            document.getElementById('cuota').textContent= cuota;
+            textoTotalPagar.textContent = totalPagar;
+        }else{
+            let resto = subtotal - entrada;
+            document.getElementById('cuota').textContent = (resto/mesesdiferir).toFixed(2);
+            totalPagar = resto;
+            document.getElementById('totalreq').value = totalPagar.toFixed(2);
+            textoTotalPagar.textContent = totalPagar.toFixed(2);
+        }
+    }
 }
 
 function leerMeses(e){
-    alert('leyendo meses')
     if(document.getElementById('entrada').value=='' || document.getElementById('entrada').value == null){
         alert('No olvide agregar la entrada para el cálculo de las cuotas del credito');
     }else{
@@ -408,12 +413,11 @@ function leerMeses(e){
         var mesesdiferir = e.target.value;
         document.getElementById('mesescuota').textContent = mesesdiferir;
         document.getElementById('meses').value = mesesdiferir;
-        alert('valor de meses diferir:'+mesesdiferir)
         if(mesesdiferir>3){
             let resto = subtotal - entrada;
             let interesPagar = resto * (mesesdiferir*(interes/100));
             totalPagar = (resto + interesPagar).toFixed(2);
-            document.getElementById('totalreq').value = totalPagar.toFixed(2);
+            document.getElementById('totalreq').value = totalPagar;
             let cuota = (totalPagar/mesesdiferir).toFixed(2);
             document.getElementById('cuota').textContent= cuota;
             textoTotalPagar.textContent = totalPagar;
