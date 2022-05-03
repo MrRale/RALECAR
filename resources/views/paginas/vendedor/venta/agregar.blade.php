@@ -60,6 +60,7 @@
                             <div class="form-group">
                                 <label>¿Posee RUC?</label>
                                 <select name="opcionruc" id="opcionruc" onchange="opcionRuc()" class="form-control">
+                                   <option disabled selected>Seleccione la respuesta</option>
                                     <option value="si">Si</option>
                                     <option value="no">No</option>
                                 </select>
@@ -164,6 +165,8 @@
                                                             value="{{ $shopping_cart->total_precios() }}" />
                                                         <input type="hidden" id="subtotalcarrito" name="subtotalcarrito"
                                                             value="{{ $shopping_cart->subtotal() }}" />
+                                                            <input type="hidden" id="subtotalcarrito2"
+                                                            value="{{ $shopping_cart->subtotal() }}" />
                                                         <input type="hidden" id="totalimpuesto" name="totalimpuesto"
                                                             value="{{ $shopping_cart->total_impuesto() }}" />
                                                         <input type="hidden" id="totalreq" name="totalreq" />
@@ -194,7 +197,7 @@
                                                         <td></td>
                                                         <td style="font-weight:bold;">Forma de pago</td>
                                                         <td style="font-weight: bold">
-                                                            <select id="formapago" onchange="formaPago()"
+                                                            <select id="formapago" onchange="formaPago()" disabled
                                                                 class="form-control" name="formapago"
                                                                 class="myniceselect nice-select wide" required>
                                                                 <option selected="true" disabled>seleccione la forma
@@ -208,7 +211,7 @@
 
                                                     <div class="es_credito ">
                                                         {{-- VALOR DE ABONO COMO ENTRADA --}}
-                                                        <tr id="tr1" style="display:">
+                                                        <tr id="tr1" style="display:none">
                                                             <td></td>
                                                             <td style="font-weight:bold;">Monto de entrada</td>
                                                             <td style="font-weight: bold">
@@ -217,11 +220,11 @@
                                                             </td>
                                                         </tr>
 
-                                                        {{-- MESES A DIFERIR --}}
-                                                        <tr id="tr2" style="display:">
+                                                        {{-- diferir A DIFERIR --}}
+                                                        <tr id="tr2" style="display:none">
                                                             <td></td>
-                                                            <td style="font-weight:bold;">Meses a diferir los
-                                                                ${{ $shopping_cart->subtotal() }}</td>
+                                                            <td style="font-weight:bold;">meses a diferir los
+                                                               </td>
                                                             <td style="font-weight: bold">
                                                                 <input id="mesesdiferir" type="number" min="1" max="24"
                                                                     class="form-control mesesdiferir" name="mesesdiferir" />
@@ -274,8 +277,8 @@
                                     {{-- <button class="btn btn-light">Cancelar</button> --}}
                                     <a class="btn btn-warning" href="{{ url('/cesta') }}"><i class="fas fa-edit"></i>
                                         Editar</a>
-                                    <a class="btn btn-success" id="btncalcular" onclick="calcular()"><i
-                                            class="fas fa-calculator"></i> Calcular</a>
+                                    {{-- <a class="btn btn-success" id="btncalcular" onclick="calcular()"><i
+                                            class="fas fa-calculator"></i> Calcular</a> --}}
                                 </div>
                             </div>
                         </div>
@@ -289,131 +292,144 @@
 
 
 <script>
- var subGlobal = 0;
+ var totalPagar = 0,interes = 6, iva = document.getElementById('iva').value, totalprecios = document.getElementById('totalprecios').value;
+ var subtotal=0, textoIva = document.getElementById('ivacalculado'), opcionFormaPago = document.getElementById('formapago');
+ var descuento = 10, textoTotalPagar = document.getElementById('total'), textoSubtotal = document.getElementById('subtotal');
+ var band = false;
  var tr1 = document.getElementById('tr1').style;
  var tr2 = document.getElementById('tr2').style;
  var tr3 = document.getElementById('tr3').style;
  var tr4 = document.getElementById('tr4').style;
- var entrada=0, meses=0, saldo=0, cuota=0,desc=0;
- var estadoFormaPago=false;//contado
+function opcionRuc(){
+    alert('seleccionando opcion')
+    alert('Estado de formPago:'+opcionFormaPago.disabled);
+   
+    opcionFormaPago.disabled = false;
+    var opcionruc = document.getElementById('opcionruc').value;
+    if(opcionruc === "si"){//SI TIENE RUC
+        document.getElementById('ruc').classList.remove('hidden');
+        if(band==true){
+        alert('el formpago ya fue usado')
+        var impuestoiva = totalprecios*(iva/100);
+        textoIva.textContent = impuestoiva.toFixed(2);
+        subtotal = parseFloat(totalprecios)+parseFloat(impuestoiva);
+        textoSubtotal.textContent = subtotal.toFixed(2);
+            formaPago();
+        }
+
+        var impuestoiva = totalprecios*(iva/100);
+        textoIva.textContent = impuestoiva.toFixed(2);
+    subtotal = parseFloat(totalprecios)+parseFloat(impuestoiva);
+    textoSubtotal.textContent = subtotal.toFixed(2);
+   
+    }else{ //NO TIENE RUC
+        document.getElementById('ruc').className += " hidden";
+        if(band==true){
+             subtotal = totalprecios;
+             textoSubtotal.textContent = subtotal;
+        textoIva.textContent = 0;
+            formaPago();
+        }
+        subtotal = totalprecios;
+        textoSubtotal.textContent = subtotal;
+        textoIva.textContent = 0;
+    } 
+}
+
 function formaPago(){
-  var op = document.getElementById("formapago").value;
-     
-  if(op==1){ //contado
-    estadoFormaPago=false;
-    //   alert('contado');
-       var sub = subGlobal;
-    //   alert(sub);
-      if(sub>100){
-         desc = sub*0.10;//aplicamos el descuento del 10%
-        sub = sub - desc;
-        document.getElementById('descuento').textContent = desc;
-      document.getElementById('subtotal').textContent = sub;
-      }
-
-      tr1.display='none';tr2.display='none';tr3.display='none'; tr4.display='';
-
-      document.getElementById('total').textContent = sub;
-document.getElementById('totalreq').value = sub;
-  }
-  if(op==2){ //credito
-    tr1.display=''; tr2.display=''; tr3.display='';tr4.display='none';//si es credito escondemos el descuento
-    document.getElementById('entrada').disabled=false;
-    document.getElementById('mesesdiferir').disabled=true;
-    document.getElementById('mesesdiferir').value=meses;
-    estadoFormaPago=true;
-    // calcular();
-  }
-}
-
-        function aplicarIva() { // si tiene ruc
-            
-            var iva = document.getElementById('totalimpuesto').value;
-            var subtotal = document.getElementById('subtotalcarrito').value;
-            document.getElementById('ivacalculado').textContent = iva;
-            document.getElementById('subtotal').textContent = subtotal;
-            document.getElementById('subtotalcarrito').value = subtotal;
-            subGlobal = subtotal;// la suma de los precios mas el iva
+    band=true;
+    alert('valor del subtotal: '+subtotal);
+    opcionFormaPago = document.getElementById('formapago').value; //actualizamos el valor de opcionFormaPago
+    alert(opcionFormaPago);
+    if(opcionFormaPago==2)//CREDITO
+    {
+        alert('valor del subtotal dentro de opcion2: '+subtotal);
+        tr1.display=''; //habilitamos el input de entrada
+        tr2.display=''; //habilitamos el input de entrada
+        tr3.display=''; //cuota y mesescuota
+        tr4.display='none'; //habilitamos el
+        var entrada = document.getElementById('entrada').value;
+        var mesesdiferir = document.getElementById('mesesdiferir').value;
+        document.getElementById('mesescuota').textContent = mesesdiferir;
+        document.getElementById('meses').value = mesesdiferir;
+        if(mesesdiferir>3){
+            alert("entrada:"+entrada+", meses diferir:"+mesesdiferir);
+            let resto = subtotal - entrada;
+            alert("resto:"+resto);
+            let interesPagar = resto * (mesesdiferir*(interes/100));
+           
+           
+            alert('interes: '+interesPagar);
+            totalPagar = (resto + interesPagar).toFixed(2);
+            let cuota = (totalPagar/mesesdiferir).toFixed(2);
+            document.getElementById('cuota').textContent= cuota;
+            textoTotalPagar.textContent = totalPagar;
+            document.getElementById('totalreq').value = totalPagar;
+            alert('totalpagar:'+totalPagar);
+        }else{
+            let resto = subtotal - entrada;
+            document.getElementById('cuota').textContent = (resto/mesesdiferir).toFixed(2);
+             totalPagar = resto;
+             document.getElementById('totalreq').value = totalPagar.toFixed(2);
+            textoTotalPagar.textContent = totalPagar.toFixed(2);
         }
-
-        function opcionRuc(){
-            var selectRuc = document.getElementById('opcionruc');
-            var formruc = document.getElementById('ruc');
-            if (selectRuc.value == "no") {
-                formruc.className += " hidden";
-                var totalprecios = document.getElementById('totalprecios').value;
-                document.getElementById('ruc').value="";
-                //actualizamos a cero el iva y actualizamos el subtotal
-                document.getElementById('ivacalculado').textContent = 0;
-                document.getElementById('subtotal_iva').value= 0;
-            document.getElementById('subtotal').textContent = totalprecios;
-            document.getElementById('subtotalcarrito').value = totalprecios;
-            subGlobal = totalprecios; // la suma de los precios
-            } else {
-                formruc.classList.remove('hidden');
-                aplicarIva();
+    }else{//CONTADO
+        alert('valor del subtotal dentro de opcion1: '+subtotal);
+       tr2.display='none'; tr1.display='none';tr3.display='none';
+            if(subtotal>100){
+               let  descuentoSubtotal = (subtotal*(descuento/100));
+               document.getElementById('descuento').textContent = descuentoSubtotal.toFixed(2);
+               alert('descuentoSubtotal:'+descuentoSubtotal);
+                totalPagar = subtotal-descuentoSubtotal;
+               
+                alert('total por pargar menos el descuento: '+totalPagar);
+                textoTotalPagar.textContent = totalPagar.toFixed(2);
+                document.getElementById('totalreq').value = totalPagar.toFixed(2);
+            }else{
+                alert("valor de subtotal cuando subtotal  <100 :"+subtotal);
+                totalPagar = subtotal;
+                document.getElementById('totalreq').value = totalPagar.toFixed(2);
+                alert('valor de totalPagar:'+totalPagar);
+                textoTotalPagar.textContent = totalPagar;
             }
-
-        }
-
-        function leerEntrada(e){
-     entrada = e.target.value; 
-     if(entrada){
-      document.getElementById('mesesdiferir').disabled=false;
-     }
-  }
-  function leerMeses(e){   
-   meses = e.target.value;
-//    alert('Valor de meses es:'+meses);
-   document.getElementById('mesescuota').textContent = meses;
-
-  }
-
-  function calcular(){
-    // alert("calculando");
-  var cuotas = 0 ;
-  var subt = subGlobal;
-//   alert('valor de subt obtenido de sub: '+subt);
-  saldo = subt - entrada;//-20
-//   alert('valor de saldo de subt - entrada:'+saldo);
-// alert('valor de saldo calculo: '+saldo);
-  if(meses>3 && estadoFormaPago==true){ // si es un credito mayor a 3 meses
-    // alert('meses > 3');
-     let interes = saldo*meses*(6/100);
-     cuota = (saldo+interes) / meses;
-     cuotas = cuota;
-
-     document.getElementById('cuota').textContent = cuotas.toFixed(2);
-document.getElementById('cuotarequest').value = cuotas.toFixed(2);
-document.getElementById('total').textContent = (cuotas*meses).toFixed(2);
-document.getElementById('totalreq').value = (cuotas*meses).toFixed(2);
-  }
-  else{ // es a contado
-    //   alert('valor de saldo : '+saldo);
-    // alert('El valor de meses dentro del else es :'+meses);
-      cuotas = saldo/meses;
-  var res = subGlobal - desc - entrada ;
-//   alert("valor de res con subglobal - entrada: "+res);
-  document.getElementById('total').textContent = res;
-document.getElementById('totalreq').value = res;
-
-document.getElementById('cuota').textContent = cuotas.toFixed(2);
-document.getElementById('cuotarequest').value = cuotas.toFixed(2);
-// document.getElementById('total').textContent = (cuotas*meses).toFixed(2);
-// document.getElementById('totalreq').value = (cuotas*meses).toFixed(2);
-  }
-//   alert('El valor de meses fuera del else es :'+meses);
-  document.getElementById('meses').textContent = meses;
-document.getElementById('mesesdiferir').value = meses;
-// totalPagar(cuotas);
-
-document.getElementById('meses').value=meses;
+    }
 }
 
-        document.addEventListener('DOMContentLoaded', e => {
-          aplicarIva();
+function leerEntrada(){
+    // tr2.display='';
+}
+
+function leerMeses(e){
+    alert('leyendo meses')
+    if(document.getElementById('entrada').value=='' || document.getElementById('entrada').value == null){
+        alert('No olvide agregar la entrada para el cálculo de las cuotas del credito');
+    }else{
+        var entrada = document.getElementById('entrada').value;
+        var mesesdiferir = e.target.value;
+        document.getElementById('mesescuota').textContent = mesesdiferir;
+        document.getElementById('meses').value = mesesdiferir;
+        alert('valor de meses diferir:'+mesesdiferir)
+        if(mesesdiferir>3){
+            let resto = subtotal - entrada;
+            let interesPagar = resto * (mesesdiferir*(interes/100));
+            totalPagar = (resto + interesPagar).toFixed(2);
+            document.getElementById('totalreq').value = totalPagar.toFixed(2);
+            let cuota = (totalPagar/mesesdiferir).toFixed(2);
+            document.getElementById('cuota').textContent= cuota;
+            textoTotalPagar.textContent = totalPagar;
+        }else{
+            let resto = subtotal - entrada;
+            document.getElementById('cuota').textContent = (resto/mesesdiferir).toFixed(2);
+            totalPagar = resto;
+            document.getElementById('totalreq').value = totalPagar.toFixed(2);
+            textoTotalPagar.textContent = totalPagar.toFixed(2);
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', e => {
           document.querySelector('.entrada').addEventListener('change', leerEntrada);
           document.querySelector('.mesesdiferir').addEventListener('change', leerMeses);
         });
-    </script>
+</script>
 @endsection

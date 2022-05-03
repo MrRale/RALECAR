@@ -24,19 +24,15 @@
                 </div>
             </div>
         </div>
-        <!-- Uren's Breadcrumb Area End Here -->
-        <!-- Begin Uren's Cart Area -->
+        
         <div class="uren-cart-area">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
                         <form action="{{ route('shoppingcart.actualizar') }}" id="actualizarcarrito" method="POST">
-                            <div class="table-content table-responsive">
-                                <table class="table">
-
+                            <div class="table-content table-responsive"><table class="table">
                                     <thead>
-                                        <tr>
-                                            <th class="uren-product-remove">Retirar</th>
+                                        <tr><th class="uren-product-remove">Retirar</th>
                                             <th class="uren-product-thumbnail">Imagen</th>
                                             <th class="cart-product-descripcion">Tipo de producto</th>
                                             <th class="cart-product-codigo">Código del producto</th>
@@ -46,7 +42,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
+                                      
                                         @foreach ($shopping_cart->shopping_cart_details as $scd)
                                             <tr>
 
@@ -89,8 +85,15 @@
 
                                             </tr>
                                         @endforeach
+
+                                       
                                     </tbody>
                                 </table>
+                                @if(count($shopping_cart->shopping_cart_details)==0)
+                                <div style="display:flex; justify-content:center; align-items:center; margin-top:20px;">
+                                    <h5>Aun no cuenta con productos en el carrito</h5>
+                                </div>
+                                @endif
                             </div>
                             <div class="row">
                                 <div class="col-12">

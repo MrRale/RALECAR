@@ -602,6 +602,8 @@ class AdminController extends Controller
         $costo_envio  = 0;
         if ($ciudad != "Quito") {
             $costo_envio = 10;
+        }else{
+            $costo_envio=15;
         }
         $factura = Factura::create([
             "fecha" => Carbon::now(),

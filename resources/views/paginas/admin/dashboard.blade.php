@@ -726,7 +726,7 @@
                           <i class="icon-sm fa fa-user mr-2"></i>Deudas pendientes</a>
 
                       </p>
-                      <h2>${{$deudatotal}}</h2>
+                      <h2>COP: {{$deudatotal}}</h2>
                       <label class="badge badge-outline-danger badge-pill"></label>
                     </div>
                   </div>

@@ -78,9 +78,14 @@
                                 </div>
                                 <div class="footer-widgets">
                                     <ul>
+                                        @if(auth()->check())
+                                        @if(auth()->user()->hasRole('Administrador'))
                                         <li><a href="{{route('cliente.perfil')}}">Mi perfil</a></li>
-                                     
-
+                                     @else
+                                
+                                     <li><a href="{{route('admin.perfilAdministracion')}}">Mi perfil</a></li>
+                                     @endif
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
