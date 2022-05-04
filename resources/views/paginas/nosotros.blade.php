@@ -116,7 +116,7 @@
                         <div class="team-member">
                             <div class="team-thumb img-hover_effect">
                                 <a href="#">
-                                    <img src="assets/images/about-us/team/1.jpg" alt="Our Team Member">
+                                    <img src="{{asset('assets/images/gerente_rale.jpg')}}" alt="Our Team Member">
                                 </a>
                             </div>
                             <div class="team-content text-center">
