@@ -361,7 +361,7 @@ function formaPago(){
             textoTotalPagar.textContent = totalPagar.toFixed(2);
         }
     }else{//CONTADO
-       tr2.display='none'; tr1.display='none';tr3.display='none';
+       tr2.display='none'; tr1.display='none';tr3.display='none', tr4.display='';
             if(subtotal>100){
                let  descuentoSubtotal = (subtotal*(descuento/100));
                document.getElementById('descuento').textContent = descuentoSubtotal.toFixed(2);
