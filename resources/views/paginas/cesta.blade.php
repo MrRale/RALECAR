@@ -120,8 +120,10 @@
                             <li>Subtotal <span>${{ $shopping_cart->total_precios() }}</span></li>
                             <li>Total <span>${{ $shopping_cart->total_precios() }}</span></li>
                         </ul>
-                        @if(Auth()->user()->hasRole('Cliente'))
+                        @if(auth()->check())
+                        @if(auth()->user()->hasRole('Cliente'))
                         <a href="{{ route('cliente.pasarela') }}">Proceder a pagar</a>
+                        @endif
                         @endif
                     </div>
                 </div>
