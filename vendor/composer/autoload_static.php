@@ -65,6 +65,7 @@ class ComposerStaticInit60ef499660bd117dad75de693279fed7
             'Tests\\' => 6,
             'Teapot\\StatusCode\\' => 18,
             'Teapot\\' => 7,
+            'Tavo\\' => 5,
         ),
         'S' => 
         array (
@@ -235,6 +236,10 @@ class ComposerStaticInit60ef499660bd117dad75de693279fed7
         'Teapot\\' => 
         array (
             0 => __DIR__ . '/..' . '/shrikeh/teapot/src',
+        ),
+        'Tavo\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tavo1987/ec-validador-cedula-ruc/src',
         ),
         'Symfony\\Polyfill\\Php81\\' => 
         array (
@@ -2235,7 +2240,6 @@ class ComposerStaticInit60ef499660bd117dad75de693279fed7
         'Faker\\Provider\\nl_BE\\Payment' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Payment.php',
         'Faker\\Provider\\nl_BE\\Person' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Person.php',
         'Faker\\Provider\\nl_BE\\PhoneNumber' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/PhoneNumber.php',
-        'Faker\\Provider\\nl_BE\\Text' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_BE/Text.php',
         'Faker\\Provider\\nl_NL\\Address' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Address.php',
         'Faker\\Provider\\nl_NL\\Color' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Color.php',
         'Faker\\Provider\\nl_NL\\Company' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Provider/nl_NL/Company.php',
@@ -6444,6 +6448,7 @@ class ComposerStaticInit60ef499660bd117dad75de693279fed7
         'Symfony\\Polyfill\\Php73\\Php73' => __DIR__ . '/..' . '/symfony/polyfill-php73/Php73.php',
         'Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/..' . '/symfony/polyfill-php80/Php80.php',
         'Symfony\\Polyfill\\Php81\\Php81' => __DIR__ . '/..' . '/symfony/polyfill-php81/Php81.php',
+        'Tavo\\ValidadorEc' => __DIR__ . '/..' . '/tavo1987/ec-validador-cedula-ruc/src/ValidadorEc.php',
         'Teapot\\HttpException' => __DIR__ . '/..' . '/shrikeh/teapot/src/HttpException.php',
         'Teapot\\StatusCode' => __DIR__ . '/..' . '/shrikeh/teapot/src/StatusCode.php',
         'Teapot\\StatusCodeException\\InvalidStatusCodeException' => __DIR__ . '/..' . '/shrikeh/teapot/src/StatusCodeException/InvalidStatusCodeException.php',

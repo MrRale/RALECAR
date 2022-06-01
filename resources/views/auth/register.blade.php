@@ -48,8 +48,20 @@
     </div>
 @endif
 
+
+
         <div class="uren-login-register_area">
             <div class="container-fluid">
+
+                @if (Session::has('aviso'))
+    <div class="alert alert-info alert-dismissible text-center mt-5" role="alert">
+        {{ Session::get('aviso') }}
+        <button type="button" class="close" data-dismiss="alert" role="alert">
+            <span aria-button="true">&times;</span>
+        </button>
+    </div>
+@endif
+
                 <div class="row" style="display:flex; justify-content: center;">
                     <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
                         <form method="POST" action="{{ route('register') }}">

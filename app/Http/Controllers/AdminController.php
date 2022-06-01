@@ -651,13 +651,15 @@ class AdminController extends Controller
 
             // ========= ENLAZAMOS LA IMAGEN DE ABONO === //
             if ($request->hasFile('imagen')) {
-                $file = $request->file('imagen');
-                $name = time() . '_' . $file->getClientOriginalName();
-                $ruta = public_path() . '/imgs/abonos/';
-                $file->move($ruta, $name);
-                $urlimage = '/imgs/abonos/' . $name;
+                $url = "";
+                $file = $request['imagen'];
+                $elemento = Cloudinary::upload($file->getRealPath(), ['folder' => 'abonos']);
+                $public_id = $elemento->getPublicId();
+                $url = $elemento->getSecurePath();
+    
                 $abono->image()->create([
-                    'url' => $urlimage
+                    "url" => $url,
+                    "public_id" => $public_id
                 ]);
             }
 
@@ -738,13 +740,15 @@ class AdminController extends Controller
 
                 // ========= ENLAZAMOS LA IMAGEN DE PAGO AL ABONO REGISTRADO === //
                 if ($request->hasFile('imagen')) {
-                    $file = $request->file('imagen');
-                    $name = time() . '_' . $file->getClientOriginalName();
-                    $ruta = public_path() . '/imgs/abonos/';
-                    $file->move($ruta, $name);
-                    $urlimage = '/imgs/abonos/' . $name;
+                    $url = "";
+                    $file = $request['imagen'];
+                    $elemento = Cloudinary::upload($file->getRealPath(), ['folder' => 'abonos']);
+                    $public_id = $elemento->getPublicId();
+                    $url = $elemento->getSecurePath();
+        
                     $abono->image()->create([
-                        'url' => $urlimage
+                        "url" => $url,
+                        "public_id" => $public_id
                     ]);
                 }
 
@@ -821,13 +825,15 @@ class AdminController extends Controller
 
                 // ========= ENLAZAMOS LA IMAGEN DE PAGO AL ABONO GENERADO === //
                 if ($request->hasFile('imagen')) {
-                    $file = $request->file('imagen');
-                    $name = time() . '_' . $file->getClientOriginalName();
-                    $ruta = public_path() . '/imgs/abonos/';
-                    $file->move($ruta, $name);
-                    $urlimage = '/imgs/abonos/' . $name;
+                    $url = "";
+                    $file = $request['imagen'];
+                    $elemento = Cloudinary::upload($file->getRealPath(), ['folder' => 'abonos']);
+                    $public_id = $elemento->getPublicId();
+                    $url = $elemento->getSecurePath();
+        
                     $abono->image()->create([
-                        'url' => $urlimage
+                        "url" => $url,
+                        "public_id" => $public_id
                     ]);
                 }
 

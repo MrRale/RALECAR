@@ -15,6 +15,7 @@ return array(
     'Tests\\' => array($baseDir . '/tests'),
     'Teapot\\StatusCode\\' => array($vendorDir . '/teapot/status-code/src'),
     'Teapot\\' => array($vendorDir . '/shrikeh/teapot/src'),
+    'Tavo\\' => array($vendorDir . '/tavo1987/ec-validador-cedula-ruc/src'),
     'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Symfony\\Polyfill\\Php73\\' => array($vendorDir . '/symfony/polyfill-php73'),

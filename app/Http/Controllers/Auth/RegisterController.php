@@ -36,7 +36,8 @@ class RegisterController extends Controller
 
     protected function validator(array $data)
     {
-        // dd($data['cedula']);
+        // dd($data);
+        print_r('VALIDANDO');
         return Validator::make(
             $data,
             [
@@ -70,6 +71,8 @@ class RegisterController extends Controller
 
     protected function create(array $data)
     {
+        // dd($data);
+      
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
